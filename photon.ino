@@ -1,3 +1,6 @@
+//@orga=GoTronic
+//@author=Sylvain G.
+
 #include "Adafruit_DHT/src/Adafruit_DHT.h"
 
 int relayOUT = D2;

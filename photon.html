@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+	<script>
+	var accessToken = "473f753c1dda3c46fed1d456822a3281127d6398";
+	var deviceID = "2e0021000f47363336383437";
+	var url = "https://api.spark.io/v1/devices/" + deviceID + "/relay";
+	function switchOn(){
+		$.post(url, {params: "on", access_token: accessToken});
+	}
+	function switchOff(){
+		$.post(url, {params: "off", access_token: accessToken});
+	}
+	</script>
+
+</head>
+
+
+<body>
+
+	<h1>
+	Commande du relais : <input type="button" onclick="switchOn()" value="ON" style="height:auto ; width:auto ; font-size:24px"/> <input type="button" onclick="switchOff()" value="OFF" style="height:auto ; width:auto ; font-size:24px"/>
+
+	<br>
+	<span id="str2"></span>
+	<script type="text/javascript">
+	    window.setInterval(function() {
+	        requestURL = "https://api.spark.io/v1/devices/2e0021000f47363336383437/str2?access_token=473f753c1dda3c46fed1d456822a3281127d6398";
+	        $.getJSON(requestURL, function(json) {
+	            document.getElementById("str2").innerHTML = json.result;
+	        });
+	    },500);
+	</script>
+
+	<br>
+	<span id="str3"></span>
+	<script type="text/javascript">
+	    window.setInterval(function() {
+	        requestURL = "https://api.spark.io/v1/devices/2e0021000f47363336383437/str3?access_token=473f753c1dda3c46fed1d456822a3281127d6398";
+	        $.getJSON(requestURL, function(json) {
+	            document.getElementById("str3").innerHTML = json.result;
+	        });
+	    },500);
+	</script>
+
+	<br><br>Humidit&eacute; :
+	<span id="h"></span>
+	<script type="text/javascript">
+	    window.setInterval(function() {
+	        requestURL = "https://api.spark.io/v1/devices/2e0021000f47363336383437/h?access_token=473f753c1dda3c46fed1d456822a3281127d6398";
+	        $.getJSON(requestURL, function(json) {
+	        	document.getElementById("h").innerHTML = json.result;
+	        });
+	    },3000);
+	</script>%
+
+	<br>Temp&eacute;rature :
+	<span id="t"></span>
+	<script type="text/javascript">
+	    window.setInterval(function() {
+	        requestURL = "https://api.spark.io/v1/devices/2e0021000f47363336383437/t?access_token=473f753c1dda3c46fed1d456822a3281127d6398";
+	        $.getJSON(requestURL, function(json) {
+	        	document.getElementById("t").innerHTML = json.result;
+	        });
+	    },3000);
+	</script>&deg;C
+
+	<br>
+	<span id="str1"></span>
+	<script type="text/javascript">
+	    window.setInterval(function() {
+	        requestURL = "https://api.spark.io/v1/devices/2e0021000f47363336383437/str1?access_token=473f753c1dda3c46fed1d456822a3281127d6398";
+	        $.getJSON(requestURL, function(json) {
+	        	document.getElementById("str1").innerHTML = json.result;
+	        });
+	    },3000);
+	</script>
+
+	</h1>
+
+</body>
+
+</html>
